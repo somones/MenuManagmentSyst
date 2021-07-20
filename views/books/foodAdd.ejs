@@ -1,0 +1,142 @@
+<!doctype html>
+<html class="no-js " lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+	<title>:: Oreo Bootstrap4 Admin ::</title>
+	<!-- Favicon-->
+	<link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../assets/plugins/morrisjs/morris.css"/>
+	<!-- Custom Css -->
+	<link rel="stylesheet" href="../../assets/css/main.css">
+	<link rel="stylesheet" href="../../assets/css/hm-style.css">
+	<link rel="stylesheet" href="../../assets/css/color_skins.css">
+</head>
+<body class="theme-purple index2">
+	<!-- Overlay For Sidebars -->
+	<div class="overlay"></div>
+	<!-- Top Bar -->
+	<nav class="navbar p-l-5 p-r-5">
+		<ul class="nav navbar-nav navbar-left">     
+			<li class="float-right">
+				<a href="sign-in.html" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+			</li>
+		</ul>
+	</nav>
+	<div class="menu-container">
+        <div class="menu">
+            <ul class="pullDown">
+                <li><a href="/books/foodCategory">Live Food Menu</a></li>
+                <li><a href="<javascript:void(0)>">Food Categories</a>
+                    <ul class="pullDown">
+                        <li><a href="/books/categories">List Of Food Categories</a> </li>
+                        <li><a href="/books/addCategories">Add Category</a> </li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0)">Food Items</a>
+                    <ul class="pullDown">
+                        <li><a href="/books/menuItems">List Of Food Items</a> </li>
+                        <li><a href="/books/foodAdd">Add Food Items</a> </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<!-- Main Content -->
+	<section class="content">
+		<div class="block-header">
+			<div class="row">
+				<div class="col-lg-7 col-md-6 col-sm-12">
+					<h2>Food Menu Managment System
+					<small>Welcome !!</small>
+					</h2>
+				</div>
+                
+			</div>
+		</div>
+		<div class="container-fluid">
+			<% if (messages.error) { %>
+				<div class="alert alert-danger" role="alert"><%- messages.error %></div>
+			<% } %>
+			<div class="row clearfix">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="body">
+							<!-- Horizontal Layout -->
+							<div class="row clearfix">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<div class="card">
+										<div class="header">
+											<h2><strong>Add</strong> Food Item</h2>
+										</div>
+										<div class="body">
+											<form action="/books/foodAdd" method="post" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label>Food Name:</label>
+                                                    <input type="text" class="form-control" name="foodName" value="<%= foodName %>" autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Food Description:</label>
+                                                    <input type="text" class="form-control" name="foodDescription" value="<%= foodDescription %>" autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Food Price:</label>
+                                                    <input type="text" class="form-control" name="foodPrice" value="<%= foodPrice %>" autocomplete="off">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Food Image</label>
+                                                    <input type="file" class="form-control" name="foodImage" value="<%= foodImage %>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" class="btn btn-info" value="Add"/>
+                                                </div>
+                                            </form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Jquery Core Js --> 
+	<script src="../../assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+	<script src="../../assets/js/pages/index2.js"></script>
+	<script>
+		/*global $ */
+		$(document).ready(function() {
+		  "use strict";
+		  $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
+		  //Checks if li has sub (ul) and adds class for toggle icon - just an UI
+		
+		  $('.menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');
+		
+		  $(".menu > ul > li").hover(function(e) {
+			if ($(window).width() > 943) {
+			  $(this).children("ul").stop(true, false).fadeToggle(150);
+			  e.preventDefault();
+			}
+		  });
+		  //If width is more than 943px dropdowns are displayed on hover    
+		  $(".menu > ul > li").click(function() {
+			if ($(window).width() <= 943) {
+			  $(this).children("ul").fadeToggle(150);
+			}
+		  });
+		  //If width is less or equal to 943px dropdowns are displayed on click (thanks Aman Jain from stackoverflow)
+		
+		  $(".h-bars").click(function(e) {
+			$(".menu > ul").toggleClass('show-on-mobile');
+			e.preventDefault();
+		  });
+		  //when clicked on mobile-menu, normal menu is shown as a list, classic rwd menu story (thanks mwl from stackoverflow)
+		
+		});    
+    </script>    
+</body>
+</html>

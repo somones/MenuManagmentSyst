@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complete responsive food website design tutorial </title>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- custom css file link  -->
+    <link rel='stylesheet' href='/stylesheets/styles.css' />
+</head>
+<body>
+<section class="popular" id="popular">
+    <h1 class="heading"> Best <span>Seller</span> foods <%= data.length %></h1>
+    <div class="box-container">
+        <% for(var i = 0; i< data.length; i++) { %>
+            <% if(data[i].foodBestSeller) { %>
+            <div class="box">
+                <span class="price"> $ <%= data[i].foodPrice %>  </span>
+                <img src="/stylesheets/images/<%= data[i].foodImage%>" alt="">
+                <h3><%= data[i].foodName %></h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="btn">order now</a>
+            </div>
+            <% } %>
+        <% } %>
+    </div>
+</section>
+<!-- steps section ends -->
+<!-- gallery section starts  -->
+<section class="gallery" id="gallery">
+
+    <h1 class="heading"> Same <span> Category </span> </h1>
+
+    <div class="box-container">
+        <% for(var l = 0; l< data.length; l++) { %>
+            <% if(!data[l].foodBestSeller) { %>
+                <div class="box">
+                    <img src="/stylesheets/images/<%= data[l].foodImage%>" alt="">
+                    <div class="content">
+                        <h3><%= data[l].foodName %></h3>
+                        <p><%= data[l].foodDescription %></p>
+                        <a href="#" class="btn">ordern now</a>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+</section>
+<!-- custom js file link  -->
+<script src="/stylesheets/script.js"></script>
+</body>
+</html>

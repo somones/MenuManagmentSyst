@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+	<!-- speciality section starts  -->
+	<section class="speciality" id="speciality">
+		<h1 class="heading"> Our <span>Menu</span> </h1>
+		<div class="box-container">
+            <% if(data.length) { %>
+                <% for(var i = 0; i< data.length; i++) { %>
+                    <div class="box"><a href="../books/food/<%=data[i].catId%>">
+                        <img class="image" src="/stylesheets/images/s-img-1.jpg" alt="">
+                        <div class="content">
+                            <img src="/stylesheets/images/<%= data[i].catImage%>" alt="">
+                            <h3><%= data[i].catName%></h3>
+                            <p><%= data[i].catDescription%></p>
+                        </div></a>
+                    </div>
+                <% } %>
+            <% } %>
+		</div>
+	</section>
+	<!-- custom js file link  -->
+	<script src="/stylesheets/script.js"></script>
+</body>
+</html>
